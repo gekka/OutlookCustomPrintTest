@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<customUI onLoad="Ribbon_Load" xmlns="http://schemas.microsoft.com/office/2009/07/customui" >
+	
+	<backstage onShow="backstage_Show" onHide="backstage_Hide">
+
+		<tab idMso="TabPrint"  visible="true" >
+			<!-- 元の印刷タブを表示させないならvisible="false"に -->
+			<firstColumn>
+				<!-- 通常の印刷タブにコントロールを追加 -->
+				<group id="tabPrint_testGroup" label="てすと" >
+					<topItems>
+						<checkBox id="toggle" label="てすと"
+											onAction="onChangeToggle"/>
+					</topItems>
+				</group>
+			</firstColumn>
+		</tab>
+
+
+		<!-- 自作の印刷タブを作ってみる -->
+		<tab id="TabPrint2" insertAfterMso="TabPrint" label="印刷" visible="true"
+				 columnWidthPercent="20">
+
+			<firstColumn >
+				<group label="かすたむ" id="GroupPrintPreview" >
+					<primaryItem>
+						<button id="printCustom" imageMso="FilePrint" label="印刷" onAction="onPrintCustom"/>
+					</primaryItem>
+					
+					<topItems>
+						<labelControl label="HTMLをいじくってみるテスト" id="xxx"/>
+					</topItems>
+				</group>
+			</firstColumn>
+
+			<secondColumn>
+				<group id="preview">
+					<topItems >
+						<imageControl id="previewImage" getImage="getPreviewImage" />
+					</topItems>
+
+					<bottomItems>
+						<layoutContainer  layoutChildren="horizontal" id="lc1"/>
+					</bottomItems>
+				</group>
+			</secondColumn>
+		</tab>
+		
+	</backstage>
+</customUI>
